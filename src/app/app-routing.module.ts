@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [
+  {path: '',redirectTo:'login',pathMatch:'full' },
   {path: 'feed', loadChildren: './feed-page/feed-page.module#FeedPageModule' },
   {path: 'login', loadChildren: './login-page/login-page.module#LoginPageModule'}
 ];
