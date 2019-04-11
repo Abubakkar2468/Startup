@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { LoginPageRoutingModule } from './login-page-routing.module';
 import { LoginPageComponent } from './login-page.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -11,6 +12,7 @@ import { LoginPageComponent } from './login-page.component';
   imports: [
     CommonModule,
     LoginPageRoutingModule
-  ]
+  ],
+  providers: [CookieService]
 })
 export class LoginPageModule { }

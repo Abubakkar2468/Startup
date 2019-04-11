@@ -1,3 +1,27 @@
-<p>
-  feed-page works!
-</p>
+<div class="container-fluid h-100">
+  <div class="content-wrapper">
+    <div class=" row h-100">
+      <div class="col-md-8 col-sm-8 ">
+    
+      </div>
+      <div class="col-md-4 col-sm-4 ">
+        <div class="align">
+          <div class="card-header collapsed" data-toggle="collapse" data-target="#communication" aria-expanded="false" aria-controls="communication">
+            hi
+          </div>
+          <div class="collapse" id="communication" >
+            <div class="chat-area">
+              <div *ngFor="let message of messages" class="msg">
+                  {{message.message}}
+              </div>
+            </div>
+        <!-- <div class="row"> -->
+            <input class="col-md-8 col-sm-8" [(ngModel)]="message" (keyup)="$event.keyCode == 13 && sendMessage(message)" />
+            <button class="col-md-4 col-sm-4" (click)="sendMessage(message)">Send</button>
+        <!-- </div>       -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
