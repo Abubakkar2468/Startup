@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SpeechComponent } from './speech/speech.component';
+import { SignupComponent } from './signup/signup.component';
 import { AuthGaurdService as AuthGaurd } from './services/auth-gaurd.service';
 
 
@@ -19,6 +20,10 @@ const routes: Routes = [
     path: 'speech',
     component: SpeechComponent,
     canActivate: [AuthGaurd]
+  },
+  {
+    path: 'signup',
+    component: SignupComponent
   }
 ];
 

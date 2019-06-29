@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChatServiceService } from '../services/chat-service.service';
+import { CommonService } from '../services/common.service';
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-feed-page',
   templateUrl: './feed-page.component.html',
@@ -10,10 +12,10 @@ export class FeedPageComponent implements OnInit {
   message: String = '';
   messages: String[] = [];
 
-  constructor(private chatService: ChatServiceService) { }
+  constructor(private chatService: ChatServiceService, private serv: CommonService, private cookieServ: CookieService) { }
 
   ngOnInit() {
-    console.log(this.messages);
+    console.log(this.messages, this.cookieServ.get('io'));
     this.chatService
       .getMessages()
       .subscribe((message: string) => {
@@ -24,7 +26,7 @@ export class FeedPageComponent implements OnInit {
 
   sendMessage(msg) {
     console.log(msg);
-    this.chatService.sendMessage(msg);
+    this.chatService.sendMessage({email: 'bakkar@yopmail.com', message: msg});
   }
 
 }

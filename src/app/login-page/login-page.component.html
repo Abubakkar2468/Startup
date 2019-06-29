@@ -21,11 +21,11 @@
       <legend>Login</legend>
       <div class="p-1">
         <label class="pr-4" for="">Username </label>
-        <input type="text" name="username" id="user">
+        <input type="text" name="username" id="user" [(ngModel)]="email">
       </div>
       <div class="p-1">
         <label class="pr-4" for="">Password </label>
-        <input style="margin-left: 0.2rem;" type="password" name="pass" id="password">
+        <input class="pass" type="password" name="pass" id="password" [(ngModel)]="password">
       </div>
       <div class="p-1">
         <div class="btn" (click)="login()">Login</div>

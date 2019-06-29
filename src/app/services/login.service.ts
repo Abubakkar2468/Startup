@@ -11,16 +11,18 @@ export class LoginService {
   constructor( private http: HttpClient) { }
 
 
-  login() {
+  login(obj) {
      
     const url = this.apiUrl + 'login';
 
-    return this.http.post(url, {
-      "user": {
-        "email": "abc@yopmail.com",
-        "password": "abc2468"
-      }
-    });
+    return this.http.post(url, obj);
+
+  }
+  signup(obj) {
+     
+    const url = this.apiUrl + 'signup';
+
+    return this.http.post(url, obj);
 
   }
 }
