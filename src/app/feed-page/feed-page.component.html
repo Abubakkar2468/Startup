@@ -2,12 +2,14 @@
   <div class="content-wrapper">
     <div class=" row h-100">
       <div class="col-md-8 col-sm-8 ">
-    
+        <div *ngFor="let id of activeUser">
+          <span (click)="getId(id)">{{id}}</span>
+        </div>
       </div>
       <div class="col-md-4 col-sm-4 ">
         <div class="align">
           <div class="card-header collapsed" data-toggle="collapse" data-target="#communication" aria-expanded="false" aria-controls="communication">
-            {{serv.username}}
+            {{serv.user.username}}
           </div>
           <div class="collapse" id="communication" >
             <div class="chat-area">

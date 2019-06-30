@@ -37,7 +37,8 @@ export class LoginPageComponent implements OnInit {
       console.log(res);
       this.serv.username = res['user']['username'];
       this.cookie.set(btoa('token'), btoa(res['token']), 1000);
-      this.router.navigate(['feed'])
+      window.localStorage.setItem(btoa('user'), JSON.stringify(res['user']));
+      this.router.navigate(['feed']);
     });
   }
 
