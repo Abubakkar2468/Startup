@@ -15,7 +15,7 @@ export class CommonService {
 
 
   getActive() {
-    const url = this.url + '/api/users/active';
+    const url = this.url + '/api/chat/active';
     let headers = new HttpHeaders();
     headers = headers.set('Authorization', 'Token ' + this.user.token);
 

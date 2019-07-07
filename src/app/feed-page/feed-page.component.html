@@ -1,15 +1,15 @@
-<div class="container-fluid h-100">
+<div class="container-fluid">
   <div class="content-wrapper">
-    <div class=" row h-100">
+    <!-- <div class=" row h-100">
       <div class="col-md-8 col-sm-8 ">
-        <div *ngFor="let id of activeUser">
-          <span (click)="getId(id)">{{id}}</span>
+        <div *ngFor="let obj of activeUser">
+          <span (click)="getId(obj.id)">{{obj.userName}}</span>
         </div>
       </div>
       <div class="col-md-4 col-sm-4 ">
         <div class="align">
           <div class="card-header collapsed" data-toggle="collapse" data-target="#communication" aria-expanded="false" aria-controls="communication">
-            {{serv.user.username}}
+            {{user.username}}
           </div>
           <div class="collapse" id="communication" >
             <div class="chat-area">
@@ -17,10 +17,48 @@
                   {{message.message}}
               </div>
             </div>
-        <!-- <div class="row"> -->
             <input class="col-md-8 col-sm-8" [(ngModel)]="message" (keyup)="$event.keyCode == 13 && sendMessage(message)" />
             <button class="col-md-4 col-sm-4" (click)="sendMessage(message)">Send</button>
-        <!-- </div>       -->
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <div id="accordion" class="online-user">
+      <div class="card">
+        <div class="card-header" id="headingOne">
+          <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <!-- <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            </button> -->
+              Online Users
+          </h5>
+        </div>
+    
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+          <div class="card-body">
+            <div *ngFor="let obj of activeUser;" class="cp" (click)="openChatBox(obj)">
+              {{obj.userName}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="chat-box-layout pl-3 pr-3" *ngIf="openChat.length">
+      <div class="card chat-box float-right" *ngFor="let obj of openChat">
+        <span class="cancel-cross" (click)="removeChatBox(obj)"></span>
+        <div class="card-header">
+          {{obj.userName}}
+        </div>
+        <div class="card-body">
+          <div *ngFor="let message of messages" [ngClass]="(message.senderId !== obj.id) ? 'text-right mb-2' : 'text-left mb-2'">
+            <span [ngClass]="(message.senderId !== obj.id) ? 'text-send' : 'text-recieve'">{{message.message}}</span>
+        </div>
+        </div>
+        <div class="card-footer">
+          <div class="msg-input">
+            <input type="text" name="message" placeholder="Type your message ..." id="message_field" [(ngModel)]="obj.msg" (keyup)="($event.keyCode === 13) ? sendMessage(obj) : ''">
+          </div>
+          <div class="send-btn" (click)="sendMessage(obj)">
+            Send
           </div>
         </div>
       </div>

@@ -20,7 +20,7 @@ export class AuthGaurdService implements CanActivate {
     }
   }
 
-  canActivate (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) : boolean {
+  canActivate (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     if (this.isAuthenticate()) {
       return true;
     }

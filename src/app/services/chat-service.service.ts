@@ -24,9 +24,22 @@ export class ChatServiceService {
   getMessages = () => {
     return Observable.create((observer) => {
       this.socket.on('msg', (message) => {
-        console.log('======', message)
+        console.log('======', message);
           observer.next(message);
       });
   });
+  }
+
+  setUsers(user) {
+    this.socket.emit('username', user);
+  }
+
+  getUsers() {
+    return Observable.create((observer) => {
+      this.socket.on('users', (users) => {
+        console.log('users ===> ', users);
+        observer.next(users);
+      } );
+    });
   }
 }
